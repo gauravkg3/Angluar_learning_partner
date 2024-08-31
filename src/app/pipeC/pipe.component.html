@@ -1,0 +1,52 @@
+<div class="mt-2 bg-secondary text-white rounded">
+    <h1>Pipe in angular</h1>
+    <p class="pt-3">Default Pipe,Custom Pipe</p>
+</div>
+<div class="row">
+    <div class="col-3">Original value-{{firstName}}
+    <br>
+     After Pipe-{{firstName | uppercase}}
+    </div>
+    <div class="col-3">Original value-{{firstName}}
+    <br>
+     After Pipe-{{firstName | lowercase}}
+    </div>
+    <div class="col-3">Original value-{{firstName}}
+    <br>
+     After Pipe-{{firstName |titlecase}}
+    </div>
+    <div class="col-3">Original value-{{currentDate}}
+    <br>
+     After Pipe-{{currentDate | date}}
+    </div>
+    <div class="col-3">Original value-{{currentDate}}
+    <br>
+     After Pipe-
+    </div>
+    <div class="col-3">Original value-{{currentDate | date:'dd-MMM-yyyy'}}
+    <br>
+     After Pipe-{{currentDate | date:'dd/MM/yyyy'}}
+    </div>
+    <div class="col-3">Original value-{{student}}
+    <br>
+     After Pipe-{{student |json}}
+    </div>
+    <div class="col-3">Original value-
+    <br>
+     After Pipe-
+    </div>
+    <div class="col-3">Original value-{{currentTime}}
+    <br>
+     After Pipe-{{currentTime}}
+    </div>
+    <div class="col-3">Original value-
+    <br>
+     After Pipe-{{currentTime |async|date:'hh:mm:ss'}}
+    </div>
+    /*async pipe subscribe to observable*/
+    <div class="col-3">Original value-{{student.name}}
+        <br>
+         After Pipe-{{student.state | na}}
+        </div>
+
+</div>

@@ -1,0 +1,137 @@
+<div class="mt-2 bg-secondary text-white rounded">
+    <h1>Attributes-directives</h1>
+    <p class="pt-3">[ngClass],[ngStyle]</p>
+    <button class="btn btn-primary" [routerLink]="['/structural-directive']"> Go to Structural Components</button>
+</div>
+<div class="row pt-3">
+    <div class="col-3">
+        <div  class="p-3 text-center" [ngClass]="div1Bgcolor">
+            <h3>Div-1</h3>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias
+                reiciendis maiores quo veniam nesciunt, numquam dolorum culpa dolore
+                pariatur earum fugiat repellat laborum cum commodi excepturi, tempore
+                libero deserunt incidunt.
+            </p>
+        </div>
+    </div>
+    <div class="col-3">
+        <div  [ngClass]="isDiv2Active==true ?'bg-success':'bg-warning'" class="p-3 text-center">
+            <h3>Div-2</h3>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias
+                reiciendis maiores quo veniam nesciunt, numquam dolorum culpa dolore
+                pariatur earum fugiat repellat laborum cum commodi excepturi, tempore
+                libero deserunt incidunt.
+            </p>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="p-3 text-center" [ngClass]= "num1 == num2 ? 'bg-secondary text-primary text-white':'bg-danger'">
+            <h3>Div-3</h3>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias
+                reiciendis maiores quo veniam nesciunt, numquam dolorum culpa dolore
+                pariatur earum fugiat repellat laborum cum commodi excepturi, tempore
+                libero deserunt incidunt.
+            </p>
+        </div>
+    </div>
+  <!--<div class="col-3" *ngIf="isActive">--> 
+    <div class="col-3" >
+        <div [ngClass]="isActive ? 'bg-primary':''">
+            <h3>Div-4</h3>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias
+                reiciendis maiores quo veniam nesciunt, numquam dolorum culpa dolore
+                pariatur earum fugiat repellat laborum cum commodi excepturi, tempore
+                libero deserunt incidunt.
+            </p>
+        </div>
+    </div>
+    <div class="row pt-3">
+        <div class="col-3 text-center">
+            <button class="btn btn-danger" (click)="addRedClass()">Add Red</button>
+            <button (click)="addBlueClass()"class="btn btn-primary mx-2">Add blue</button>
+        </div>
+        <div class="col-3 text-center" (click)="toggleDiv2()">
+            <button class="btn btn-success">Toggle</button>
+        </div>
+        <div class="col-3">
+            <div style="display: flex; align-items: center">
+                <input type="text" [(ngModel)]="num1"   placeholder="Num-1" class="width-50" />
+                <input type="text" [(ngModel)]="num2" placeholder="Num-2" class="width-50" />
+            </div>
+        </div>
+        <div class="col-3">
+            <div style="display: flex; align-items: center">
+                <input type="checkbox" [(ngModel)]="isActive" class="width-50" />
+                <select [(ngModel)]="selectedState">
+                    <option value="">Select state</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="SriLanka">SriLanka</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <ul>
+            <li *ngFor="let city of cityArray">{{city}}</li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <div *ngFor="let city of cityArray">{{city}}</div>
+    </div>
+    <div class="col-3">
+        <select>
+            <option value="" *ngFor="let city of cityArray">{{city}}</option>
+        </select>
+    </div>
+    <div class="col-3">
+        <select>
+            <option *ngFor="let stud of studentList" [value]="stud.studId">{{stud.name}}</option>
+        </select>
+    </div>
+</div>
+
+<div class="row pt-6">
+    <div class="col-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Status</th>
+                    <th>Gender</th>
+                    <th>Totalmarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stud of studentList;let srNo=index">
+                    <td>{{srNo+1}}</td>
+                    <td>{{stud.name}}</td>
+                    <td>{{stud.city}}</td>
+                    <td [ngStyle]="{'background-color':stud.isActive?'yellow':'Red'}">
+                       <span>{{stud.isActive?'Active':'De-Active'}}</span>
+                    </td>
+                    <td>{{stud.gender}}</td>
+                    
+                    <td>
+                        <div class="progress">
+                        <div class="progress-bar" role="progressbar" [ngStyle]="{'width': stud.totalMarks}" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{{stud.totalMarks}}%</div>
+                    </div>
+                </td>
+
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-4">
+        <div [ngStyle]="customerStyle">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat veniam nihil laboriosam eius delectus dolor vel mollitia voluptate, deleniti fuga, commodi ratione veritatis suscipit exercitationem velit voluptates modi culpa! Itaque?</div>
+    </div>
+</div>

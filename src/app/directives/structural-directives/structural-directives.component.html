@@ -1,0 +1,126 @@
+<div class="mt-2 bg-secondary text-white rounded">
+    <h1>Structural Structural-directives</h1>
+    <p>*ngIf *ngFor...</p>
+    <button class="btn btn-primary" (click)="navigateToattributes()"> Go to Attributes Components</button>
+
+</div>
+<div class="row pt-3">
+    <div class="col-3">
+        <div *ngIf="isDivVisible" class="bg-danger p-3 text-center">
+            <h3>Div-1</h3>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias
+                reiciendis maiores quo veniam nesciunt, numquam dolorum culpa dolore
+                pariatur earum fugiat repellat laborum cum commodi excepturi, tempore
+                libero deserunt incidunt.
+            </p>
+        </div>
+    </div>
+    <div class="col-3">
+        <div *ngIf="isDiv2Visible" class="bg-success p-3 text-center">
+            <h3>Div-2</h3>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias
+                reiciendis maiores quo veniam nesciunt, numquam dolorum culpa dolore
+                pariatur earum fugiat repellat laborum cum commodi excepturi, tempore
+                libero deserunt incidunt.
+            </p>
+        </div>
+    </div>
+    <div class="col-3" *ngIf="num1==num2">
+        <div class="bg-secondary p-3 text-center">
+            <h3>Div-3</h3>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias
+                reiciendis maiores quo veniam nesciunt, numquam dolorum culpa dolore
+                pariatur earum fugiat repellat laborum cum commodi excepturi, tempore
+                libero deserunt incidunt.
+            </p>
+        </div>
+    </div>
+  <!--<div class="col-3" *ngIf="isActive">--> 
+    <div class="col-3" >
+        <div class="bg-success p-3 text-center" *ngIf="selectedState=='USA'">
+            <h3>Div-4</h3>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias
+                reiciendis maiores quo veniam nesciunt, numquam dolorum culpa dolore
+                pariatur earum fugiat repellat laborum cum commodi excepturi, tempore
+                libero deserunt incidunt.
+            </p>
+        </div>
+    </div>
+    <div class="row pt-3">
+        <div class="col-3 text-center">
+            <button class="btn btn-danger" (click)="hideDiv1()">Hide</button>
+            <button (click)="showDiv1()"class="btn btn-primary mx-2">Show</button>
+        </div>
+        <div class="col-3 text-center" (click)="toggleDiv2()">
+            <button class="btn btn-success">Toggle</button>
+        </div>
+        <div class="col-3">
+            <div style="display: flex; align-items: center">
+                <input type="text" [(ngModel)]="num1"   placeholder="Num-1" class="width-50" />
+                <input type="text" [(ngModel)]="num2" placeholder="Num-2" class="width-50" />
+            </div>
+        </div>
+        <div class="col-3">
+            <div style="display: flex; align-items: center">
+                <input type="checkbox" [(ngModel)]="isActive" class="width-50" />
+                <select [(ngModel)]="selectedState">
+                    <option value="">Select state</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="SriLanka">SriLanka</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <ul>
+            <li *ngFor="let city of cityArray">{{city}}</li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <div *ngFor="let city of cityArray">{{city}}</div>
+    </div>
+    <div class="col-3">
+        <select>
+            <option value="" *ngFor="let city of cityArray">{{city}}</option>
+        </select>
+    </div>
+    <div class="col-3">
+        <select>
+            <option *ngFor="let stud of studentList" [value]="stud.studId">{{stud.name}}</option>
+        </select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let stud of studentList;let srNo=index">
+                    <td>{{srNo+1}}</td>
+                    <td>{{stud.name}}</td>
+                    <td>{{stud.city}}</td>
+                    <td>
+                       <span *ngIf="!stud.isActive">De-Active</span>
+                       <span *ngIf="stud.isActive">Active</span>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
