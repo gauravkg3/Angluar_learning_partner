@@ -19,7 +19,7 @@ student:any={
   name :'Gaurav',
   city:'pune',
   empId:323,
-  state:'hh'
+  state:''
 };
 
 constructor()

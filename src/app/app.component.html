@@ -8,11 +8,11 @@
         <a class="mx-4" routerLink="/attribute-directive"> Attributes-directives</a>
         <a class="mx-4" routerLink="/ifelse-directive">Ifelse</a>
         <a class="mx-4" routerLink="/forswitch-directive">forswitch</a>
-        <a class="mx-4" routerLink="/pipe">pipe</a>
-        <a class="mx-4" routerLink="/form">Form</a>
-        <a class="mx-4" routerLink="/reactiveform">ReactiveForm</a>
-
-        <ng-container *ngIf="!isAuthenticated()">
+        <a class="mx-4" routerLink="/pipe">Pipe</a>
+        <a class="mx-4" routerLink="/form">Template form</a>
+        <a class="mx-4" routerLink="/reactiveform">Reactiveform</a>
+        <div></div>
+            <ng-container *ngIf="!isAuthenticated()">
             <a class="mx-4" routerLink="/login"> Login</a>
             <a class="mx-4" routerLink="/register"> Register</a>
         </ng-container>
@@ -21,6 +21,8 @@
         </ng-container>
     </div>
 </nav>
+
 <div class="p-4">
     <router-outlet></router-outlet>
 </div>
+
