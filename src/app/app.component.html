@@ -1,4 +1,4 @@
-<nav class="flex justify-between p-4 bg-purple-900 text-white">
+<nav class="flex justify-between p-4 bg-primary text-black">
     <div>
         <a routerLink="/">Book Shop</a>
     </div>
@@ -11,8 +11,19 @@
         <a class="mx-4" routerLink="/pipe">Pipe</a>
         <a class="mx-4" routerLink="/form">Template form</a>
         <a class="mx-4" routerLink="/reactiveform">Reactiveform</a>
-        <div></div>
-            <ng-container *ngIf="!isAuthenticated()">
+        <a class="mx-4" routerLink="/getapi">GetAPI</a>
+        <a class="mx-4" routerLink="/postapi">PostAPI</a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div>
+        <ng-container *ngIf="!isAuthenticated()">
             <a class="mx-4" routerLink="/login"> Login</a>
             <a class="mx-4" routerLink="/register"> Register</a>
         </ng-container>
@@ -21,6 +32,7 @@
         </ng-container>
     </div>
 </nav>
+
 
 <div class="p-4">
     <router-outlet></router-outlet>

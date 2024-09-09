@@ -13,6 +13,8 @@ import { SwtichComponent } from './ControlFlow/swtich/swtich.component';
 import { PipeComponent } from './pipeC/pipe.component';
 import { TemplateComponent } from './forms/template/template.component';
 import { ReactiveComponent } from './forms/reactive/reactive.component';
+import { GetApiComponent } from './API_client/get-api/get-api.component';
+import { PostApiComponent } from './API_client/post-api/post-api.component';
 
 const routes: Routes = [
   { path: '', component: BooksComponent },
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: 'pipe', component:PipeComponent},
   { path: 'form', component:TemplateComponent},
   { path: 'reactiveform', component:ReactiveComponent},
+  { path: 'getapi', component:GetApiComponent},
+  { path: 'postapi', component:PostApiComponent},
 ];
 
 @NgModule({
