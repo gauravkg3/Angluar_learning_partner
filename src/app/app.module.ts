@@ -11,10 +11,15 @@ import { IfelseComponent } from './ControlFlow/ifelse/ifelse.component';
 import { SwtichComponent } from './ControlFlow/swtich/swtich.component';
 import { PostApiComponent } from './API_client/post-api/post-api.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LifecycleEventComponent } from './lifecycle-event/lifecycle-event.component';
+import { NgtemplateComponent } from './ngtemplate/ngtemplate.component';
+import { NgcontainerComponent } from './ngcontainer/ngcontainer.component';
+import { ViewchildComponent } from './viewchild/viewchild.component';
+import { SignalComponent } from './signal/signal.component';
 
 @NgModule({
   declarations: [AppComponent, CartComponent],
-  imports: [BrowserModule, BooksModule, AppRoutingModule, AuthModule,HttpClientModule],
+  imports: [BrowserModule, BooksModule, AppRoutingModule, AuthModule,HttpClientModule,LifecycleEventComponent,NgtemplateComponent,NgcontainerComponent,ViewchildComponent,SignalComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

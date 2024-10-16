@@ -1,0 +1,63 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+    <h1>Ng-Container</h1>
+</div>
+<div class="row">
+    <div class="col-4">
+        <ng-container *ngIf="isContainer">
+            <p>This is from Ng-Conatiner</p>
+        </ng-container>
+    </div>
+    <div class="col-4">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr. No</th>
+                    <th>Name</th>
+                    <th>UserName</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngIf="isApi">
+                    <tr>
+                        <td colspan="4" class="text-center">
+                            <div class="spinner-border text-muted"></div>
+                            <div class="spinner-border text-primary"></div>
+                            <div class="spinner-border text-success"></div>
+                            <div class="spinner-border text-info"></div>
+                            <div class="spinner-border text-warning"></div>
+                            <div class="spinner-border text-danger"></div>
+                            <div class="spinner-border text-secondary"></div>
+                            <div class="spinner-border text-dark"></div>
+                            <div class="spinner-border text-light"></div>
+                        </td>
+                    </tr>
+                </ng-container>
+                <ng-container *ngIf="!isApi">
+                    <tr *ngFor="let stud of userList;let srNo=index">
+                        <td>{{srNo+1}}</td>
+                        <td>{{stud.name}}</td>
+                        <td>{{stud.username}}</td>
+                        <td>{{stud.email}}</td>                
+                    </tr>
+                </ng-container> 
+              
+            </tbody>
+        </table>
+    </div>
+    <div class="col-4">
+       <ng-container *ngTemplateOutlet="myTemp">
+
+       </ng-container>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <button class="btn btn-success" (click)="getUser()">Load Users</button>
+    </div>
+    <div class="col-4"></div>
+    <div class="col-4"></div>
+</div>
+<ng-template #myTemp>
+    <p>Hi from Template!!</p>
+</ng-template>

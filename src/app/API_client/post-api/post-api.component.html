@@ -3,6 +3,7 @@
     <h1>Post API</h1>
     <p>Create Department,Department List</p>
 </div>
+<app-alert [alertType]="'Success'" [message]="'Gaurav welcomes you to POST API!!'"></app-alert>
 <div class="row pt-2">
     <div class="col-8">
         <div class="card">
@@ -23,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @for (item of deptList; track $index) {
+                                @for (item of userList(); track $index) {
                                 <tr>
                                     <td>{{$index+1}}</td>
                                     <td>{{item.departmentId}}</td>
@@ -31,7 +32,9 @@
                                     <td>{{item.departmentLogo}}</td>
                                     <td>
                                         <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
-                                        <button class="btn btn-danger" (click)="onDelete(item.departmentId)">Delete</button>
+                                        <app-my-button (onnBtnClick)="onDelete(item.departmentId)" [btnClass]="'btn btn-danger'" [btnText]="'Delete'"></app-my-button>
+
+                                        <!-- <button class="btn btn-danger" (click)="onDelete(item.departmentId)">Delete</button> -->
                                     </td>
                                 </tr>
                             }
@@ -40,6 +43,12 @@
                         </table>
                     </div>
                 </div>
+                <div class="col-3">
+                    {{name}}
+                </div>
+                <!-- <div class="col-3">
+                    <button class="btn btn-danger" (click)="reloadUI()">Reload UI</button>
+                </div> -->
             </div>
         </div>
     </div>

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { DepartmentService } from 'src/app/Services/department.service';
 
 
 @Component({
@@ -19,6 +20,16 @@ export class IfelseComponent implements OnInit {
   num2: string = '';
   selectedState: string = '';
   cityArray: string[] = ['Pune', 'Mumbai', 'Nagpur', 'Thane'];
+  constructor(private deptService:DepartmentService){
+    this.deptService.onRoleChanges$.subscribe((result:string)=>
+    {
+      debugger;
+    })
+    this.deptService.role$.subscribe((result:string)=>
+    {
+      debugger;
+    })
+  }
   studentList: any = [
     { studId: 21,totalMarks:88,gender:'Male',name: 'AAA', city: 'Pune', isActive: false },
     { studId: 22,totalMarks:33,gender:'Female',name: 'BBB', city: 'Mumbai', isActive: false },
@@ -46,7 +57,7 @@ export class IfelseComponent implements OnInit {
     this.div1Bgcolor = 'bg-primary';
   }
   isActive: boolean = false;
-  constructor() {}
+ 
 
   ngOnInit(): void {}
   showDiv1() {

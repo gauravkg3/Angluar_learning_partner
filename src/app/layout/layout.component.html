@@ -1,0 +1,123 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Book Shop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="data-binding">Data-Binding</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="signal">Signal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="life-cycle">Life Cycle Event</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Directive</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="structural-directive">Structural-directives</a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="attribute-directive">Attributes-directives</a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="ng-template">Ng-template</a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="ng-container">Ng-container</a>
+            </li>
+            <li><a class="dropdown-item" routerLink="add-emp">add-emp</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Control Flow</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="ifelse-directive">
+                <span>&#64;</span>if</a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="forswitch-directive">
+                <span>&#64;</span>for, switch</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="pipe"> Pipe</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Forms</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="form">Template Form</a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="reactiveform">Reactive Form</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">API -HttpClient</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="getapi">Get API</a></li>
+            <li><a class="dropdown-item" routerLink="postapi">Post API</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Decorator</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="viewchild">ViewChild</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <form class="d-flex">
+            <span class="text-white">{{loggedUserData?.email}}</span>
+            <button class="btn btn-outline-success" type="button" (click)="logoff()">LogOFF</button>
+          </form>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <!-- <select  [(ngModel)]="selectedRole" name="selectedRole" (ngModelChange)="onRoleChnage($event)">
+          <option value="">Select Role</option>
+          <option value="user">User Role</option>
+          <option value="guest">Guest Role</option>
+        </select> -->
+        <!-- <span class="text-white">{{loggedUserData?.emailId}}</span> -->
+        <!-- <button class="btn btn-primary" type="button" (click)="logoff()">LogOff</button>   -->
+      </form>
+      <form class="d-flex">
+        <select [(ngModel)]="selectedRole" name="selectedRole" (ngModelChange)="onRoleChanges($event)">
+          <option value="">Select</option>
+          <option value="admin">Admin</option>
+          <option value="guest">Guest</option>
+        </select>
+      </form>
+    </div>
+  </div>
+  <a class="navbar-brand" routerLink="/cart">My Cart</a>
+  <a class="navbar-brand" routerLink="/login">Login</a>
+  <a class="navbar-brand" routerLink="/register">Register</a>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<!-- <div class="parent">
+  <nav class="flex justify-between p-4 bg-primary text-black">
+    
+    <div>
+      </ng-container>
+      <ng-container *ngIf="isAuthenticated()">
+                <button (click)="logout()" class="mx-4">Logout</button>
+            </ng-container> 
+    </div>
+  </nav> -->

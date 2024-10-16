@@ -1,0 +1,30 @@
+<div class="mt-2 bg-success text-white rounded">
+    <h1>Signal</h1>
+    <p>Create Signal,Update,display</p>
+</div>
+<div class="row">
+    <div class="col-3">
+        {{firstName()}} - {{courseName}}
+    </div>
+    <div class="col-3">
+        {{rollNumber()}}
+        <br>
+        Full Name=={{fullName()}}
+    </div>
+    <div class="col-3">
+        {{cityList()}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-3">
+        <button  class="btn btn-success" (click)="changeName()">Change firstName</button>
+        <button  class="btn btn-success" (click)="changeLastName()">Change lastName</button>
+    </div>
+    <div class="col-3">
+        {{rollNumber()}}:Object Name={{studentObj().name}} [] {{studentObj() | json }} 
+    </div>
+    <div class="col-3">
+        <button  class="btn btn-success" (click)="addNewCity()">Add New City</button>
+        <button  class="btn btn-success" (click)="changeStudentCity()">Change Student City</button>
+    </div>
+</div>

@@ -1,7 +1,11 @@
 <p>get-api works!</p>
+<app-alert [alertType]="'Warning'" [message]="alertMsg"></app-alert>
+<br>
+<app-alert [alertType]="'Error'" [message]="'Some Error occured!!'"></app-alert>
+<app-my-button (onnBtnClick)="getData($event)" [btnClass]="'btn btn-success'" [btnText]="'Save Record'"></app-my-button>
 <div class="row">
     <div class="col-2">
-        <button class="btn btn-success" (click)="getDepartment()">Get Users</button>
+        <button class="btn btn-success" (click)="getAllUser()">Get Users</button>
     
         <button class="btn btn-success" (click)="getAllCustomer()">Get Customer </button>
     </div>
@@ -12,10 +16,11 @@
                 }
         </select>
         @for (item of customerList; track $index) {
-            <li>{{item.fullName}}</li>
+            <li>{{item.name}}</li>
         }
         @for (item of userList; track $index) {
             <li>{{item.name}}</li>
         }
     </div>
+    <button (click)="changeMSG()" class="btn btn-success">Change MSG</button>
 </div>

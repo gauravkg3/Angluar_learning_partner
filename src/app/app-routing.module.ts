@@ -15,21 +15,46 @@ import { TemplateComponent } from './forms/template/template.component';
 import { ReactiveComponent } from './forms/reactive/reactive.component';
 import { GetApiComponent } from './API_client/get-api/get-api.component';
 import { PostApiComponent } from './API_client/post-api/post-api.component';
+import { LifecycleEventComponent } from './lifecycle-event/lifecycle-event.component';
+import { NgtemplateComponent } from './ngtemplate/ngtemplate.component';
+import { NgcontainerComponent } from './ngcontainer/ngcontainer.component';
+import { ViewchildComponent } from './viewchild/viewchild.component';
+import { LayoutComponent } from './layout/layout.component';
+import { authGuard } from './Services/auth.guard';
+import { SignalComponent } from './signal/signal.component';
 
 const routes: Routes = [
-  { path: '', component: BooksComponent },
-  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+  // { path: '', component: BooksComponent },
+  //default routes
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'structural-directive', component: StructuralDirectivesComponent },
-  { path: 'attribute-directive', component: AttributesDirectivesComponent },
-  { path: 'ifelse-directive', component:IfelseComponent },
-  { path: 'forswitch-directive', component:SwtichComponent },
-  { path: 'pipe', component:PipeComponent},
-  { path: 'form', component:TemplateComponent},
-  { path: 'reactiveform', component:ReactiveComponent},
-  { path: 'getapi', component:GetApiComponent},
-  { path: 'postapi', component:PostApiComponent},
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      // { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      {
+        path: 'structural-directive',
+        component: StructuralDirectivesComponent,
+      },
+      { path: 'attribute-directive', component: AttributesDirectivesComponent },
+      { path: 'ifelse-directive', component: IfelseComponent },
+      { path: 'forswitch-directive', component: SwtichComponent },
+      { path: 'pipe', component: PipeComponent },
+      { path: 'form', component: TemplateComponent },
+      { path: 'reactiveform', component: ReactiveComponent },
+      { path: 'getapi', component: GetApiComponent },
+      { path: 'postapi', component: PostApiComponent },
+      { path: 'life-cycle', component: LifecycleEventComponent },
+      { path: 'ng-template', component: NgtemplateComponent },
+      { path: 'ng-container', component: NgcontainerComponent },
+      { path: 'viewchild', component: ViewchildComponent },
+      { path: 'signal', component: SignalComponent},
+      { path: 'data-binding', component: AttributesDirectivesComponent,canActivate:[authGuard]},
+    ],
+  },
 ];
 
 @NgModule({

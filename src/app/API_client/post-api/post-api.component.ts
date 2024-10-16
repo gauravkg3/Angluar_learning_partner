@@ -1,37 +1,46 @@
 import { JsonPipe } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, inject, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Inject, OnInit, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DepartmentService } from 'src/app/Services/department.service';
+import { AlertComponent } from "../../ReusableComponent/alert/alert.component";
+import { MyButtonComponent } from 'src/app/ReusableComponent/my-button/my-button.component';
+import { Department, IDepartmentList } from 'src/app/Model/Class/Customer';
 
 @Component({
   selector: 'app-post-api',
   standalone: true,
-  imports: [FormsModule, JsonPipe,HttpClientModule],
+  imports: [FormsModule, JsonPipe, HttpClientModule, AlertComponent,MyButtonComponent],
   templateUrl: './post-api.component.html',
   styleUrl: './post-api.component.css',
+  //changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class PostApiComponent implements OnInit {
-  deptObj: any = {
-    departmentId: 0,
-    departmentName: '',
-    departmentLogo: '',
-  };
-  deptList: any[] = [];
+// reloadUI() {
+// }
+  // deptObj: any = {
+  //   departmentId: 0,
+  //   departmentName: '',
+  //   departmentLogo: '',
+  // };
+  deptObj:Department=new Department();
+  //deptList: any[] = [];
+  deptList: IDepartmentList[] = [];
   http = inject(HttpClient);
   deptServ=inject(DepartmentService);
-  constructor() {}
+  name:string="HTML";
+  userList=signal<any[]>([])
+  constructor(private cdRef:ChangeDetectorRef) { 
+    const result=this.deptServ.addTwoNo(26,39)
+    console.log(result);
+    
+  }
   ngOnInit(): void {
     this.getDepartment();
   }
   onSave() {
     debugger;
-    this.http
-      .post(
-        'https://projectapi.gerasim.in/api/Complaint/AddNewDepartment',
-        this.deptObj
-      )
-      .subscribe(
+    this.deptServ.saveNewDept(this.deptObj).subscribe(
         (res: any) => {
           debugger;
           if (res.result) {
@@ -48,10 +57,40 @@ export class PostApiComponent implements OnInit {
         }
       );
   }
+  // onSave() {
+  //   debugger;
+  //   this.http
+  //     .post(
+  //       'https://projectapi.gerasim.in/api/Complaint/AddNewDepartment',
+  //       this.deptObj
+  //     )
+  //     .subscribe(
+  //       (res: any) => {
+  //         debugger;
+  //         if (res.result) {
+  //           debugger;
+  //           alert('Entry created successfully!!');
+  //           this.getDepartment();
+  //         } else {
+  //           debugger;
+  //           alert(res.message);
+  //         }
+  //       },
+  //       (error) => {
+  //         debugger;
+  //       }
+  //     );
+  // }
   getDepartment() {
    this.deptServ.getAllDepartment().subscribe((result: any) => {
         debugger;
-        this.deptList = result.data;
+        //this.deptList = result.data;
+        this.userList.set(result.data);
+
+        this.name="JAVA";
+        // setTimeout(() => {
+        //   this.cdRef.detectChanges()
+        // }, 5000);
       });
   }
   // getAllDepartment() {
@@ -63,6 +102,8 @@ export class PostApiComponent implements OnInit {
   //     });
   // }
   onEdit(data: any) {
+
+    this.deptObj=new Department(); //if you want to reintialize your obj 
     this.deptObj = data;
   }
   onUpdate() {
@@ -88,6 +129,7 @@ export class PostApiComponent implements OnInit {
       );
   }
   onDelete(departmentId: number) {
+    debugger;
     const isDelete = confirm('Are you sure want to remove this?');
     debugger;
     if (isDelete) {
